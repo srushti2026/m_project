@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VeilForge - Steganography & Watermarking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* --- Custom Animations & Styles --- */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-fadeInUp {
+        animation: fadeInUp 0.5s ease-out forwards;
+      }
+
+      @keyframes backgroundShine {
+        from {
+          background-position: 200% center;
+        }
+        to {
+          background-position: -200% center;
+        }
+      }
+
+      .animated-gradient-text {
+        background-image: linear-gradient(to right, #60a5fa, #a78bfa, #60a5fa);
+        background-size: 200% auto;
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+        animation: backgroundShine 3s linear infinite;
+      }
+      
+      .glow-effect {
+        position: absolute;
+        pointer-events: none;
+        z-index: 0;
+        border-radius: 50%;
+        filter: blur(150px);
+        opacity: 0.15;
+      }
+
+      /* Base styles are now on the body tag for theme switching */
+      html {
+        scroll-behavior: smooth;
+      }
+      
+      /* --- Custom Scrollbar --- */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #e2e8f0; /* slate-200 */
+      }
+      .dark ::-webkit-scrollbar-track {
+        background: #1e293b; /* slate-800 */
+      }
+      ::-webkit-scrollbar-thumb {
+        background-color: #3b82f6; /* blue-500 */
+        border-radius: 10px;
+        border: 2px solid #e2e8f0; /* slate-200 */
+      }
+       .dark ::-webkit-scrollbar-thumb {
+         border: 2px solid #1e293b; /* slate-800 */
+      }
+
+      /* --- Card Shimmer Effect --- */
+      .card-shimmer-effect {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, 0.2) 50%, transparent 80%);
+        transform: translateX(-100%);
+        transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        pointer-events: none; /* Make sure it doesn't block interactions */
+        z-index: 1;
+      }
+       .dark .card-shimmer-effect {
+         background: linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, 0.08) 50%, transparent 80%);
+      }
+      .group:hover .card-shimmer-effect {
+        transform: translateX(100%);
+      }
+    </style>
+    <script>
+      // Prevents FOUC (Flash of Unstyled Content) when loading the theme
+      (function() {
+        const theme = localStorage.getItem('theme');
+        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/"
+  }
+}
+</script>
+</head>
+  <body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-gray-100 transition-colors duration-300">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

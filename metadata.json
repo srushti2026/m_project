@@ -1,0 +1,5 @@
+{
+  "name": "VeilForge",
+  "description": "VeilForge is a steganography and watermarking application that provides a suite of tools for embedding and extracting hidden data in images and documents, along with other fun steganography utilities.",
+  "requestFramePermissions": []
+}
